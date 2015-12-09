@@ -1,6 +1,6 @@
 {
   "name": "rijs.needs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "dist",
   "author": "Pedram Emrouznejad (https://github.com/pemrouz)",
   "scripts": {
@@ -26,7 +26,6 @@
     "rijs.components": "*",
     "rijs.core": "*",
     "rijs.css": "*",
-    "rijs.data": "*",
     "rijs.data": "*",
     "rijs.fn": "*",
     "rijs.precss": "*",
