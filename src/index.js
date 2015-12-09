@@ -1,0 +1,54 @@
+// -------------------------------------------
+// Define Default Attributes for Components
+// -------------------------------------------
+export default function needs(ripple){
+  if (!client) return;
+  log('creating')
+  ripple.render = render(ripple)(ripple.render)
+  return ripple
+}
+
+function render(ripple){
+  return next => {
+    return el => {
+      const component = lo(el.nodeName)
+          , headers = ripple.resources[component].headers
+          , attrs = headers.attrs = headers.attrs || parse(headers.needs, component)
+
+      return attrs
+        .map(([name, values]) => { 
+          return values.some((v, i) => {
+            const from = attr(el, name) || ''
+            return includes(v)(from) ? false
+                 : attr(el, name, (from + ' ' + v).trim())
+          })
+        })
+        .some(Boolean) ? el.draw() : next(el)
+    }
+  }
+}
+
+function parse(attrs = '', component) {
+  return attrs
+    .split('[')
+    .slice(1)
+    .map(replace(']', ''))
+    .map(split('='))
+    .map(([k, v]) => 
+        v          ? [k, v.split(' ')]
+      : k == 'css' ? [k, [component + '.css']]
+                   : [k, []]
+    )
+}
+
+
+import includes from 'utilise.includes'
+import replace from 'utilise.replace'
+import client from 'utilise/client'
+import split from 'utilise.split'
+import attr from 'utilise.attr'
+import key from 'utilise.key'
+import lo from 'utilise.lo'
+import is from 'utilise.is'
+var log = require('utilise/log')('[ri/needs]')
+  , err = require('utilise/err')('[ri/needs]')
