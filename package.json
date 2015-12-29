@@ -24,6 +24,7 @@
     "mocha-lcov-reporter": "*",
     "popper": "*",
     "rijs.components": "*",
+    "rijs.shadow": "*",
     "rijs.core": "*",
     "rijs.css": "*",
     "rijs.data": "*",
