@@ -42,13 +42,13 @@ describe('Needs', function(){
     , headers: { needs: '[css]' }
     })
 
-    time(20, function() { 
+    time(40, function() { 
       expect(attr(el, 'css')).to.be.eql('foo-bar-1.css')
       expect(count).to.be.eql(0)
       ripple('foo-bar-1.css', ':host {}')
     })
 
-    time(40, function() { 
+    time(80, function() { 
       expect(attr(el, 'css')).to.be.eql('foo-bar-1.css')
       expect(count).to.be.eql(1)
       done()
