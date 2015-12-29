@@ -7,37 +7,37 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = needs;
 
-var _utilise = require('utilise.includes');
+var _includes = require('utilise/includes');
 
-var _utilise2 = _interopRequireDefault(_utilise);
+var _includes2 = _interopRequireDefault(_includes);
 
-var _utilise3 = require('utilise.replace');
+var _replace = require('utilise/replace');
 
-var _utilise4 = _interopRequireDefault(_utilise3);
+var _replace2 = _interopRequireDefault(_replace);
 
 var _client = require('utilise/client');
 
 var _client2 = _interopRequireDefault(_client);
 
-var _utilise5 = require('utilise.split');
+var _split = require('utilise/split');
 
-var _utilise6 = _interopRequireDefault(_utilise5);
+var _split2 = _interopRequireDefault(_split);
 
-var _utilise7 = require('utilise.attr');
+var _attr = require('utilise/attr');
 
-var _utilise8 = _interopRequireDefault(_utilise7);
+var _attr2 = _interopRequireDefault(_attr);
 
-var _utilise9 = require('utilise.key');
+var _key = require('utilise/key');
 
-var _utilise10 = _interopRequireDefault(_utilise9);
+var _key2 = _interopRequireDefault(_key);
 
-var _utilise11 = require('utilise.lo');
+var _lo = require('utilise/lo');
 
-var _utilise12 = _interopRequireDefault(_utilise11);
+var _lo2 = _interopRequireDefault(_lo);
 
-var _utilise13 = require('utilise.is');
+var _is = require('utilise/is');
 
-var _utilise14 = _interopRequireDefault(_utilise13);
+var _is2 = _interopRequireDefault(_is);
 
 /* istanbul ignore next */
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -55,7 +55,7 @@ function needs(ripple) {
 function render(ripple) {
   return function (next) {
     return function (el) {
-      var component = (0, _utilise12.default)(el.nodeName),
+      var component = (0, _lo2.default)(el.nodeName),
           headers = ripple.resources[component].headers,
           attrs = headers.attrs = headers.attrs || parse(headers.needs, component);
 
@@ -66,8 +66,8 @@ function render(ripple) {
         var values = _ref2[1];
 
         return values.some(function (v, i) {
-          var from = (0, _utilise8.default)(el, name) || '';
-          return (0, _utilise2.default)(v)(from) ? false : (0, _utilise8.default)(el, name, (from + ' ' + v).trim());
+          var from = (0, _attr2.default)(el, name) || '';
+          return (0, _includes2.default)(v)(from) ? false : (0, _attr2.default)(el, name, (from + ' ' + v).trim());
         });
       }).some(Boolean) ? el.draw() : next(el);
     };
@@ -78,7 +78,7 @@ function parse() {
   var attrs = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
   var component = arguments[1];
 
-  return attrs.split('[').slice(1).map((0, _utilise4.default)(']', '')).map((0, _utilise6.default)('=')).map(function (_ref3) {
+  return attrs.split('[').slice(1).map((0, _replace2.default)(']', '')).map((0, _split2.default)('=')).map(function (_ref3) {
     var _ref4 = _slicedToArray(_ref3, 2);
 
     var k = _ref4[0];

@@ -42,13 +42,13 @@ function parse(attrs = '', component) {
 }
 
 
-import includes from 'utilise.includes'
-import replace from 'utilise.replace'
+import includes from 'utilise/includes'
+import replace from 'utilise/replace'
 import client from 'utilise/client'
-import split from 'utilise.split'
-import attr from 'utilise.attr'
-import key from 'utilise.key'
-import lo from 'utilise.lo'
-import is from 'utilise.is'
+import split from 'utilise/split'
+import attr from 'utilise/attr'
+import key from 'utilise/key'
+import lo from 'utilise/lo'
+import is from 'utilise/is'
 var log = require('utilise/log')('[ri/needs]')
   , err = require('utilise/err')('[ri/needs]')
