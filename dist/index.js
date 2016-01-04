@@ -55,8 +55,10 @@ function needs(ripple) {
 function render(ripple) {
   return function (next) {
     return function (el) {
-      var component = (0, _lo2.default)(el.nodeName),
-          headers = ripple.resources[component].headers,
+      var component = (0, _lo2.default)(el.nodeName);
+      if (!(component in ripple.resources)) return;
+
+      var headers = ripple.resources[component].headers,
           attrs = headers.attrs = headers.attrs || parse(headers.needs, component);
 
       return attrs.map(function (_ref) {

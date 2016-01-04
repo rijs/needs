@@ -253,5 +253,14 @@ describe('Needs', function(){
 
   })
 
+  it('should continue gracefully if component not defined', function(done) {
+    container.innerHTML = '<foo-bar-11>'
+
+    var el = container.firstElementChild
+      , ripple = needs(precss(components(fn(css(data(core()))))))
+  
+    ripple.render(el)  
+    time(20, done)
+  })
 
 })

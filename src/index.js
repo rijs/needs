@@ -12,7 +12,9 @@ function render(ripple){
   return next => {
     return el => {
       const component = lo(el.nodeName)
-          , headers = ripple.resources[component].headers
+      if (!(component in ripple.resources)) return
+        
+      const headers = ripple.resources[component].headers
           , attrs = headers.attrs = headers.attrs || parse(headers.needs, component)
 
       return attrs
