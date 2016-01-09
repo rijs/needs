@@ -35,10 +35,6 @@ var _lo = require('utilise/lo');
 
 var _lo2 = _interopRequireDefault(_lo);
 
-var _is = require('utilise/is');
-
-var _is2 = _interopRequireDefault(_is);
-
 /* istanbul ignore next */
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52,7 +48,7 @@ function needs(ripple) {
   return ripple;
 }
 
-function render(ripple) {
+var render = function render(ripple) {
   return function (next) {
     return function (el) {
       var component = (0, _lo2.default)(el.nodeName);
@@ -74,12 +70,11 @@ function render(ripple) {
       }).some(Boolean) ? el.draw() : next(el);
     };
   };
-}
+};
 
-function parse() {
+var parse = function parse() {
   var attrs = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
   var component = arguments[1];
-
   return attrs.split('[').slice(1).map((0, _replace2.default)(']', '')).map((0, _split2.default)('=')).map(function (_ref3) {
     var _ref4 = _slicedToArray(_ref3, 2);
 
@@ -87,7 +82,7 @@ function parse() {
     var v = _ref4[1];
     return v ? [k, v.split(' ')] : k == 'css' ? [k, [component + '.css']] : [k, []];
   });
-}
+};
 
 var log = require('utilise/log')('[ri/needs]'),
     err = require('utilise/err')('[ri/needs]');
