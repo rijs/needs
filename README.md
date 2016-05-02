@@ -2,7 +2,9 @@
 [![Coverage Status](https://coveralls.io/repos/rijs/needs/badge.svg?branch=master&service=github)](https://coveralls.io/github/rijs/needs?branch=master)
 [![Build Status](https://travis-ci.org/rijs/needs.svg)](https://travis-ci.org/rijs/needs)
 
-Apply default attributes defined for a component. General syntax for the `needs` header is:
+Extends the [rendering pipeline]() to apply default attributes defined for a component. 
+
+General syntax for the `needs` header is:
 
 ```js
 needs: [attr1=value2][attr2=value3 value4]
