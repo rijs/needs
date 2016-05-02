@@ -16,13 +16,11 @@ const render = ripple => next => el => {
       , attrs = headers.attrs = headers.attrs || parse(headers.needs, component)
 
   return attrs
-    .map(([name, values]) => { 
-      return values.some((v, i) => {
-        const from = attr(el, name) || ''
-        return includes(v)(from) ? false
-             : attr(el, name, (from + ' ' + v).trim())
-      })
-    })
+    .map(([name, values]) => values.some((v, i) => {
+      const from = attr(el, name) || ''
+      return includes(v)(from) ? false
+           : attr(el, name, (from + ' ' + v).trim())
+    }))
     .some(Boolean) ? el.draw() : next(el)
 }
 

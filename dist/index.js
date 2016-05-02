@@ -62,7 +62,6 @@ var render = function render(ripple) {
 
         var name = _ref2[0];
         var values = _ref2[1];
-
         return values.some(function (v, i) {
           var from = (0, _attr2.default)(el, name) || '';
           return (0, _includes2.default)(v)(from) ? false : (0, _attr2.default)(el, name, (from + ' ' + v).trim());
