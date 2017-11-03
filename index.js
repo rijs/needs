@@ -1,7 +1,7 @@
 // -------------------------------------------
 // Define Default Attributes for Components
 // -------------------------------------------
-export default function needs(ripple){
+module.exports = function needs(ripple){
   if (!client) return;
   log('creating')
   ripple.render = render(ripple)(ripple.render)
@@ -16,11 +16,13 @@ const render = ripple => next => el => {
       , attrs = headers.attrs = headers.attrs || parse(headers.needs, component)
 
   return attrs
-    .map(([name, values]) => values.some((v, i) => {
-      const from = attr(el, name) || ''
-      return includes(v)(from) ? false
-           : attr(el, name, (from + ' ' + v).trim())
-    }))
+    .map(([name, values]) => { 
+      return values.some((v, i) => {
+        const from = attr(el, name) || ''
+        return includes(v)(from) ? false
+             : attr(el, name, (from + ' ' + v).trim())
+      }) 
+    })
     .some(Boolean) ? el.draw() : next(el)
 }
 
@@ -37,10 +39,10 @@ const parse = (attrs = '', component) => attrs
 
 const log = require('utilise/log')('[ri/needs]')
     , err = require('utilise/err')('[ri/needs]')
-import includes from 'utilise/includes'
-import replace from 'utilise/replace'
-import client from 'utilise/client'
-import split from 'utilise/split'
-import attr from 'utilise/attr'
-import key from 'utilise/key'
-import lo from 'utilise/lo'
+    , includes = require('utilise/includes')
+    , replace = require('utilise/replace')
+    , client = require('utilise/client')
+    , split = require('utilise/split')
+    , attr = require('utilise/attr')
+    , key = require('utilise/key')
+    , lo = require('utilise/lo')
