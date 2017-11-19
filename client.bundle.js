@@ -196,11 +196,13 @@ var render = function (ripple) { return function (next) { return function (el) {
       var name = ref[0];
       var values = ref[1];
  
-      return values.some(function (v, i) {
-        var from = attr(el, name) || '';
-        return includes(v)(from) ? false
-             : attr(el, name, (from + ' ' + v).trim())
-      }) 
+      return values
+        .map(function (v, i) {
+          var from = attr(el, name) || '';
+          return includes(v)(from) ? false
+               : attr(el, name, (from + ' ' + v).trim())
+        }) 
+        .some(Boolean)
     })
     .some(Boolean) ? el.draw() : next(el)
 }; }; };
